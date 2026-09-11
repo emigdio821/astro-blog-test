@@ -1,0 +1,64 @@
+---
+const writers = [
+  { initials: 'MR', tone: 'bg-brand-tint text-brand-strong' },
+  { initials: 'JK', tone: 'bg-paper-sunken text-ink' },
+  { initials: 'AO', tone: 'bg-ink text-paper' },
+  { initials: 'TS', tone: 'bg-brand text-white' },
+]
+---
+
+<section class="relative overflow-hidden">
+  <!-- Soft radial wash behind the headline. -->
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_28rem_at_50%_-8rem,var(--color-brand-tint),transparent)]"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative mx-auto max-w-6xl px-5 pt-20 pb-16 text-center sm:pt-28 sm:pb-24">
+    <p class="inline-flex items-center gap-2 rounded-full border border-rule bg-paper-raised px-3 py-1 text-xs font-medium text-ink-muted">
+      <span class="size-1.5 rounded-full bg-brand" aria-hidden="true"></span>
+      Now with newsletters built in
+    </p>
+
+    <h1 class="mx-auto mt-7 max-w-3xl font-serif text-5xl leading-[1.05] tracking-tight text-balance text-ink sm:text-6xl md:text-7xl">
+      Where ideas find their readers.
+    </h1>
+
+    <p class="mx-auto mt-6 max-w-xl text-lg text-pretty text-ink-muted">
+      Inkwell is a calm, fast home for your writing. Draft in Markdown, publish in one click, and let the
+      words do the rest.
+    </p>
+
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a
+        href="/signup"
+        class="flex h-11 w-full items-center justify-center rounded-lg bg-brand px-6 text-sm font-medium text-white no-underline transition-colors hover:bg-brand-strong sm:w-auto"
+      >
+        Start writing — it's free
+      </a>
+      <a
+        href="#featured"
+        class="flex h-11 w-full items-center justify-center rounded-lg border border-rule bg-paper-raised px-6 text-sm font-medium text-ink no-underline transition-colors hover:bg-paper-sunken sm:w-auto"
+      >
+        Read the latest
+      </a>
+    </div>
+
+    <div class="mt-10 flex items-center justify-center gap-3">
+      <ul class="flex list-none p-0">
+        {writers.map((writer) => (
+          <li
+            class:list={[
+              'flex size-8 items-center justify-center rounded-full text-[0.65rem] font-semibold ring-2 ring-paper -ml-2 first:ml-0',
+              writer.tone,
+            ]}
+            aria-hidden="true"
+          >
+            {writer.initials}
+          </li>
+        ))}
+      </ul>
+      <p class="text-sm text-ink-muted">Joined by 12,400 writers this year</p>
+    </div>
+  </div>
+</section>

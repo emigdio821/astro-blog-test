@@ -1,0 +1,75 @@
+---
+const columns = [
+  {
+    heading: 'Read',
+    links: [
+      { href: '/featured', label: 'Featured' },
+      { href: '/topics', label: 'Topics' },
+      { href: '/authors', label: 'Authors' },
+      { href: '/collections', label: 'Collections' },
+    ],
+  },
+  {
+    heading: 'Write',
+    links: [
+      { href: '/editor', label: 'The editor' },
+      { href: '/guides/publishing', label: 'Publishing guide' },
+      { href: '/newsletters', label: 'Newsletters' },
+      { href: '/pricing', label: 'Pricing' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { href: '/about', label: 'About' },
+      { href: '/changelog', label: 'Changelog' },
+      { href: '/privacy', label: 'Privacy' },
+      { href: '/terms', label: 'Terms' },
+    ],
+  },
+]
+
+const year = new Date().getFullYear()
+---
+
+<footer class="border-t border-rule bg-paper-sunken">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="max-w-xs">
+      <div class="flex items-center gap-2">
+        <span
+          class="flex size-8 items-center justify-center rounded-lg bg-brand font-serif text-lg leading-none text-white"
+          aria-hidden="true"
+        >
+          I
+        </span>
+        <span class="font-serif text-xl tracking-tight text-ink">Inkwell</span>
+      </div>
+      <p class="mt-4 text-sm text-ink-muted">
+        A quiet place to publish. No infinite feed, no engagement games — just your words and the people who
+        came to read them.
+      </p>
+    </div>
+
+    {columns.map((column) => (
+      <div>
+        <h2 class="text-xs font-semibold tracking-widest text-ink-muted uppercase">{column.heading}</h2>
+        <ul class="mt-4 flex list-none flex-col gap-2.5 p-0">
+          {column.links.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-ink no-underline transition-colors hover:text-brand">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <div class="border-t border-rule">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-sm text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {year} Inkwell. Built with Astro.</p>
+      <p>Made for people who still write long things.</p>
+    </div>
+  </div>
+</footer>

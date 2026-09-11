@@ -1,0 +1,59 @@
+---
+import Layout from '@/layouts/layout.astro'
+import { RiDeleteBinLine } from '@remixicon/react'
+
+// Placeholder items — keep in sync with `cartCount` in site-nav.tsx until real cart state exists.
+const items = [
+  { name: 'Inkwell Weekly — annual subscription', detail: '12 months, cancel anytime', price: 60 },
+  { name: 'On Writing Badly (paperback)', detail: 'Mara Reyes · ships in 3 days', price: 24 },
+]
+
+const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+const subtotal = items.reduce((total, item) => total + item.price, 0)
+---
+
+<Layout title="Shopping cart — Inkwell" description="Review the items in your Inkwell cart.">
+  <section class="mx-auto max-w-3xl px-5 py-16 sm:py-20">
+    <h1 class="font-serif text-4xl tracking-tight text-ink">Shopping cart</h1>
+    <p class="mt-2 text-ink-muted">{items.length} items</p>
+
+    <ul class="mt-10 flex list-none flex-col gap-4 p-0">
+      {items.map((item) => (
+        <li class="flex items-center gap-4 rounded-2xl border border-rule bg-paper-raised p-5">
+          <div class="min-w-0 flex-1">
+            <p class="font-medium text-ink">{item.name}</p>
+            <p class="mt-1 text-sm text-ink-muted">{item.detail}</p>
+          </div>
+          <p class="shrink-0 font-medium text-ink">{currency.format(item.price)}</p>
+          <button
+            type="button"
+            aria-label={`Remove ${item.name}`}
+            class="flex size-9 shrink-0 items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-paper-sunken hover:text-ink"
+          >
+            <RiDeleteBinLine size={18} />
+          </button>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-8 flex items-center justify-between border-t border-rule pt-6">
+      <p class="text-ink-muted">Subtotal</p>
+      <p class="font-serif text-2xl text-ink">{currency.format(subtotal)}</p>
+    </div>
+
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row-reverse">
+      <button
+        type="button"
+        class="h-11 rounded-lg bg-brand px-6 text-sm font-medium text-white transition-colors hover:bg-brand-strong"
+      >
+        Checkout
+      </button>
+      <a
+        href="/"
+        class="flex h-11 items-center justify-center rounded-lg border border-rule px-6 text-sm font-medium text-ink no-underline transition-colors hover:bg-paper-sunken"
+      >
+        Keep browsing
+      </a>
+    </div>
+  </section>
+</Layout>

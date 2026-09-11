@@ -1,0 +1,51 @@
+---
+import { RiFlashlightLine, RiMailLine, RiMarkdownLine } from '@remixicon/react'
+
+// Rendered without a client directive, so these ship as plain SVG — no JS.
+const features = [
+  {
+    Icon: RiMarkdownLine,
+    title: 'Write in Markdown',
+    body: 'A keyboard-first editor that never reflows under you. Paste code, drop images, hit publish.',
+  },
+  {
+    Icon: RiMailLine,
+    title: 'Own your audience',
+    body: 'Export your subscriber list any day of the week. No lock-in, no ransom for your own readers.',
+  },
+  {
+    Icon: RiFlashlightLine,
+    title: 'Fast by default',
+    body: 'Static pages, no tracking scripts, no cookie banner. Your posts load before the spinner would.',
+  },
+]
+---
+
+<section class="border-t border-rule bg-paper-raised">
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+    <div class="max-w-2xl">
+      <h2 class="font-serif text-3xl tracking-tight text-ink sm:text-4xl">
+        Everything you need, nothing you don't
+      </h2>
+      <p class="mt-3 text-ink-muted">
+        Inkwell handles hosting, email, and the boring parts of publishing so the only decision left is what
+        to write about.
+      </p>
+    </div>
+
+    <ul class="mt-12 grid list-none gap-8 p-0 md:grid-cols-3">
+      {features.map(({ Icon, title, body }) => (
+        <li>
+          <span
+            class="flex size-10 items-center justify-center rounded-xl bg-brand-tint text-brand-strong"
+            aria-hidden="true"
+          >
+            <Icon size={20} />
+          </span>
+          <h3 class="mt-4 text-base font-semibold text-ink">{title}</h3>
+          <p class="mt-2 text-ink-muted">{body}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

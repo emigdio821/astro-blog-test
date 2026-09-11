@@ -1,0 +1,31 @@
+---
+const topics = [
+  { slug: 'craft', label: 'Craft', count: 412 },
+  { slug: 'essays', label: 'Essays', count: 388 },
+  { slug: 'tooling', label: 'Tooling', count: 271 },
+  { slug: 'audience', label: 'Audience', count: 195 },
+  { slug: 'interviews', label: 'Interviews', count: 164 },
+  { slug: 'fiction', label: 'Fiction', count: 143 },
+  { slug: 'notebooks', label: 'Notebooks', count: 121 },
+  { slug: 'reviews', label: 'Reviews', count: 98 },
+]
+---
+
+<section class="border-t border-rule">
+  <div class="mx-auto max-w-6xl px-5 py-14">
+    <h2 class="font-serif text-2xl tracking-tight text-ink">Start with a topic</h2>
+    <ul class="mt-6 flex list-none flex-wrap gap-2.5 p-0">
+      {topics.map((topic) => (
+        <li>
+          <a
+            href={`/topics/${topic.slug}`}
+            class="flex items-center gap-2 rounded-full border border-rule bg-paper-raised px-4 py-2 text-sm text-ink no-underline transition-colors hover:border-brand/40 hover:bg-brand-tint"
+          >
+            {topic.label}
+            <span class="text-xs text-ink-muted">{topic.count}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+---
+
+<section class="border-t border-rule">
+  <div class="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+    <div class="rounded-3xl border border-rule bg-ink px-6 py-12 text-center sm:px-12 sm:py-16">
+      <h2 class="mx-auto max-w-xl font-serif text-3xl tracking-tight text-balance text-paper sm:text-4xl">
+        One good essay in your inbox, every Sunday
+      </h2>
+      <p class="mx-auto mt-4 max-w-md text-paper/70">
+        The Inkwell Weekly — one featured piece, three worth your time, and nothing else.
+      </p>
+
+      <!-- Wire this up to your mailing provider (or an Astro server action) later. -->
+      <form
+        class="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row"
+        action="/api/subscribe"
+        method="post"
+      >
+        <label class="sr-only" for="newsletter-email">
+          Email address
+        </label>
+        <input
+          id="newsletter-email"
+          type="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          class="h-11 flex-1 rounded-lg border border-paper/20 bg-paper/10 px-4 text-sm text-paper placeholder:text-paper/50 focus:border-paper/40 focus:outline-none"
+        />
+        <button
+          type="submit"
+          class="h-11 shrink-0 rounded-lg bg-paper px-6 text-sm font-medium text-ink transition-colors hover:bg-paper-sunken"
+        >
+          Subscribe
+        </button>
+      </form>
+
+      <p class="mt-4 text-xs text-paper/50">No spam. Unsubscribe in one click.</p>
+    </div>
+  </div>
+</section>
